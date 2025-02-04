@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Read More Button</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            padding: 20px;
+        }
+        .content {
+            max-width: 600px;
+            margin: auto;
+        }
+        .more-text {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease-in-out;
+            display: block;
+        }
+        .read-more-btn:checked ~ .more-text {
+            max-height: 200px;
+        }
+        .read-more-btn {
+            display: none;
+        }
+        .read-more-label {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            cursor: pointer;
+            margin-top: 10px;
+            border-radius: 5px;
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+    <div class="content">
+        <p>
+            This is the beginning of the paragraph. It provides some context about the topic.
+            <input type="checkbox" id="read-more-btn" class="read-more-btn">
+            <span class="more-text"> Here is some additional text that was hidden before. Now you can see more details about the topic!</span>
+        </p>
+        <label for="read-more-btn" class="read-more-label">Read More</label>
+    </div>
+</body>
+</html>

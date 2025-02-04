@@ -1,0 +1,290 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Morganite</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+  </head>
+  <style>
+     body {
+      font-family: 'Roboto', sans-serif;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    /* Read More Section */
+    .more-text {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.5s ease-out, opacity 0.5s ease-out;
+        opacity: 0;
+    }
+    .read-more-btn:checked ~ .more-text {
+        max-height: 500px;
+        opacity: 1;
+        animation: fadeIn 0.5s ease-out;
+    }
+    .read-more-btn { display: none; }
+    .read-more-label {
+        display: inline-block;
+        background-color: #007bff;
+        color: white;
+        font-size: 14px;
+        padding: 8px 16px;
+        border-radius: 25px;
+        cursor: pointer;
+        text-decoration: none;
+        margin-top: 10px;
+        transition: background-color 0.3s ease, transform 0.3s ease;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+    .read-more-label:hover {
+        background-color: #0056b3;
+        transform: translateY(-2px);
+    }
+    .read-more-label:active { transform: translateY(0); }
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(-10px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+    .read-more-label i {
+        margin-left: 8px;
+        transition: transform 0.3s ease;
+    }
+    .read-more-btn:checked ~ .read-more-label i {
+        transform: rotate(180deg);
+    }
+    /* Navbar and Footer (unchanged) */
+    .navbar {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            animation: slideDown 1s ease-out;
+        }
+        @keyframes slideDown {
+            from { transform: translateY(-100%); }
+            to { transform: translateY(0); }
+        }
+        .navbar-brand { color: white; font-weight: bold; }
+        .navbar-nav .nav-link {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 16px;
+            padding: 10px 20px;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+        .navbar-nav .nav-link:hover {
+            color: #fff;
+            background-color: rgba(255, 255, 255, 0.2);
+            border-radius: 5px;
+        }
+        .navbar-nav .nav-link::after {
+            content: '';
+            display: block;
+            width: 0;
+            height: 2px;
+            background: white;
+            transition: width 0.3s;
+            position: absolute;
+            left: 0;
+            bottom: 0;
+        }
+        .navbar-nav .nav-link:hover::after {
+            width: 100%;
+        }
+        .navbar {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            transition: background-color 0.3s ease;
+        }
+        .navbar.navbar-expand-lg {
+            background: rgba(255, 0, 0, 0.7);
+        }
+        .navbar-nav .nav-link {
+            color: white;
+            font-size: 18px;
+            font-weight: 600;
+            padding: 12px 20px;
+            transition: color 0.3s ease;
+        }
+        .navbar-nav .nav-link:hover {
+            color: #f8f9fa;
+            background-color: rgba(0, 0, 0, 0.2);
+            border-radius: 5px;
+        }
+        .footer {
+            background-color: #222;
+            color: white;
+            padding: 50px 0;
+        }
+        .footer h5 {
+            font-weight: bold;
+            color: #f4a029;
+            margin-bottom: 20px;
+        }
+        .footer a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s ease-in-out;
+        }
+        .footer a:hover {
+            color: #f4a029;
+        }
+        .footer .social-icons a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 45px;
+            height: 45px;
+            background-color: transparent;
+            border: 2px solid #f4a029;
+            border-radius: 50%;
+            font-size: 22px;
+            margin: 5px;
+            transition: all 0.3s ease-in-out;
+            color: white;
+        }
+        .footer .social-icons a:hover {
+            background-color: #f4a029;
+            color: black;
+            transform: scale(1.1);
+        }
+        .footer .contact-info {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 10px;
+        }
+        .footer .contact-info i { color: #f4a029; }
+        .footer-logo {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .footer-logo img { width: 120px; }
+        .footer-bottom {
+            text-align: center;
+            margin-top: 30px;
+            font-size: 14px;
+            color: #bbb;
+        }
+        .footer-bottom p { margin: 0; }
+  </style>
+  <body>
+    <!-- Navbar (unchanged) -->
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <img src="logo.png" width="50px">
+            &nbsp;&nbsp;&nbsp;
+            <a class="navbar-brand" href="#">Myanmar Treasure</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="gems.html">Gems</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="About Us.html">About Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact us.html">Contact Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="References link.html">Reference Links</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+
+    <!-- Main Content -->
+    <div class="container">
+      <div class="row mt-5">
+        <h2 class="text-center">Morganite</h2>
+        <p class="text-center">Discover the soft glow and delicate charm of Morganite</p>
+        <div class="col-md-7">
+          <img src="morganite.jpg" class="img-fluid" alt="Morganite">
+        </div>
+        <div class="col-md-5">
+            <p>Morganite, a member of the beryl family, enchants with its subtle pink to peach hues. Its gentle sparkle makes it a favorite for romantic jewelry.</p>
+            <p>Physical properties:
+                With a hardness of 7.5–8 on the Mohs scale, morganite is both durable and elegant.
+            </p>
+            <p>Uses:
+                Often set in pendants, earrings, and rings, morganite adds a touch of softness and sophistication.
+            </p>
+            <input type="checkbox" id="read-more-btn" class="read-more-btn">
+            <div class="more-text">
+              <p>History:
+                Named after the financier J.P. Morgan, morganite quickly gained popularity for its rare and alluring color.
+              </p>
+              <p>Special about Morganite:
+                It is believed to promote compassion, healing, and emotional balance, making it more than just a pretty gem.
+              </p>
+              <p>Additional Information:
+                Its rarity and unique coloration continue to inspire modern designers, ensuring its status as a contemporary classic.
+              </p>
+            </div>
+            <label for="read-more-btn" class="read-more-label" style="background-color: #e0bdba;">
+                Read More <i class="fas fa-chevron-down"></i>
+            </label>
+        </div>
+      </div>
+    </div>
+    <br>
+    <!-- Footer (unchanged) -->
+    <footer class="footer">
+      <div class="container">
+          <div class="row text-center text-md-start">
+              <div class="col-md-4 footer-logo">
+                  <img src="logo.png" alt="Logo">
+              </div>
+              <div class="col-md-4">
+                  <h5>EXPLORE FURTHER</h5>
+                  <ul class="list-unstyled">
+                      <li><a href="team.html">About</a></li>
+                      <li><a href="#">Highlights</a></li>
+                  </ul>
+              </div>
+              <div class="col-md-4">
+                  <h5>Contact Us</h5>
+                  <p>myanmartreasuregroup123@gmail.com</p>
+                  <div class="contact-info">
+                      <i class="fa-solid fa-phone"></i> +95264342335, +95428234467
+                  </div>
+                  <div class="social-icons">
+                      <a href="https://x.com/twitter?lang=en"><i class="fa-brands fa-twitter"></i></a>
+                      <a href="https://www.pinterest.com/"><i class="fa-brands fa-pinterest"></i></a>
+                      <a href="https://www.facebook.com/"><i class="fa-brands fa-facebook"></i></a>
+                      <a href="https://www.youtube.com/"><i class="fa-brands fa-youtube"></i></a>
+                      <a href="https://www.instagram.com/"><i class="fa-brands fa-instagram"></i></a>
+                  </div>
+              </div>
+          </div>
+          <div class="footer-bottom">
+              <p> &copy; 2025 Myanmar Gemstones. All Rights Reserved</p>
+          </div>
+      </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" 
+            integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" 
+            crossorigin="anonymous"></script>
+  </body>
+</html>
